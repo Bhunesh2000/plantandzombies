@@ -9,7 +9,9 @@ public class game {
         hm.displayhomepage();
     }
 }
+class option{
 
+}
 class home{
     private play pl;
     public void displayhomepage(){
