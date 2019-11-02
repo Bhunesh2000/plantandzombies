@@ -7,9 +7,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_gameplay">
 
@@ -19,7 +16,7 @@
             <Image url="@background_lawn.jpg" />
          </image>
       </ImageView>
-      <Button id="startbutton" fx:id="startbutton" layoutX="510.0" mnemonicParsing="false" onAction="#suntokens" onMouseClicked="#suntokens" text="Start game" />
+      <Button id="startbutton" fx:id="startbutton" layoutX="510.0" mnemonicParsing="false" onAction="#suntokens" text="Start game" />
 
       <GridPane gridLinesVisible="true" layoutX="105.0" layoutY="44.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="354.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1">
          <columnConstraints>
@@ -41,18 +38,6 @@
             <RowConstraints maxHeight="89.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
          </rowConstraints>
-         <children>
-            <Circle fx:id="sun" radius="48.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <fill>
-                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                     <stops>
-                        <Stop color="#f8ff1f" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </RadialGradient>
-               </fill>
-            </Circle>
-         </children>
       </GridPane>
    </children>
 </Pane>
