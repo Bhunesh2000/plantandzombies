@@ -8,7 +8,7 @@
    <children>
       <ImageView fitHeight="412.0" fitWidth="610.0" layoutX="-4.0" layoutY="-3.0" pickOnBounds="true">
          <image>
-            <Image url="@pvsz%20entry%20page.jpeg" />
+            <Image url="@pvsz_home_page.jpeg" />
          </image>
       </ImageView>
       <Button layoutX="445.0" layoutY="164.0" mnemonicParsing="false" onAction="#loadgameplay" prefHeight="46.0" prefWidth="144.0" text="Start Game" textOverrun="CLIP" />
