@@ -15,7 +15,9 @@ public class Controller {
 
     public void loadgameplay(ActionEvent event) throws IOException {
         homepane.getChildren().setAll();
+
         Pane p= FXMLLoader.load(getClass().getResource("gameplay.fxml"));
+        System.out.println(p.getClass());
         scene.setRoot(p);
     }
 }
