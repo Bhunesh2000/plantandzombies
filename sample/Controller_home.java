@@ -25,10 +25,6 @@ public class Controller_home {
         Pane p=FXMLLoader.load(getClass().getResource("chooselevel.fxml"));
         homepane.getChildren().setAll(p);
     }
-//    public void chooselevel(ActionEvent event) throws IOException{
-//        Pane p=FXMLLoader.load(getClass().getResource("chooselevel.fxml"));
-//        homepane.getChildren().setAll(p);
-//    }
     @FXML
     public void exit(ActionEvent e) {
     final Node source = (Node) e.getSource();
