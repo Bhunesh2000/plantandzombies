@@ -12,8 +12,8 @@
          </image>
       </ImageView>
       <Button layoutX="445.0" layoutY="164.0" mnemonicParsing="false" onAction="#loadgameplay" prefHeight="46.0" prefWidth="144.0" text="Start Game" textOverrun="CLIP" />
-      <Button layoutX="445.0" layoutY="221.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="144.0" text="Load Game" textOverrun="CLIP" />
-      <Button layoutX="445.0" layoutY="281.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="144.0" text="Choose level" textOverrun="CLIP" />
-      <Button layoutX="445.0" layoutY="340.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="144.0" text="Exit" textOverrun="CLIP" />
+      <Button layoutX="445.0" layoutY="221.0" mnemonicParsing="false" onAction="#loadgameplay" prefHeight="46.0" prefWidth="144.0" text="Load Game" textOverrun="CLIP" />
+      <Button layoutX="445.0" layoutY="281.0" mnemonicParsing="false" onAction="#chooselevel" prefHeight="46.0" prefWidth="144.0" text="Choose level" textOverrun="CLIP" />
+      <Button layoutX="445.0" layoutY="340.0" mnemonicParsing="false" onAction="#exit" prefHeight="46.0" prefWidth="144.0" text="Exit" textOverrun="CLIP" />
    </children>
 </Pane>

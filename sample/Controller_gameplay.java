@@ -2,28 +2,27 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.animation.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import java.awt.*;
-
 import javafx.util.Duration;
 
 
-public class Controller_gameplay implements Initializable {
+public class Controller_gameplay {
 
 /*    @FXML
     private Button startbutton;*/
-@FXML
+    @FXML
+    private Pane gamepane;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-
-}
 
 public void suntokens(ActionEvent event){
     System.out.println(" works");
@@ -37,7 +36,7 @@ public void suntokens(ActionEvent event){
     path.setEndY(375);
     System.out.println(" works till 2");
 
-    Circle sun = new Circle(100);
+        Circle sun = new Circle(100);
 
     PathTransition fall = new PathTransition();
     System.out.println(" works till 3");
