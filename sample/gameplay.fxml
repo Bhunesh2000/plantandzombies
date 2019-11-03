@@ -85,7 +85,7 @@
             <Image url="@images/sun.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="69.0" layoutX="531.0" layoutY="1.0" onMouseClicked="#mainmenu" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="23.0" fitWidth="69.0" layoutX="531.0" layoutY="1.0" onMouseClicked="#ingamemenu" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/menu.png" />
          </image>

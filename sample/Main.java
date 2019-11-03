@@ -13,6 +13,9 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("homepage.fxml"));
         primaryStage.setTitle("Plant V/S Zombies");
         primaryStage.setScene(new Scene(root, 600, 400));
+
+
+
         primaryStage.show();
         Stage s2=new Stage();
 //        start2(s2);
