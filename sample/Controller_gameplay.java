@@ -5,8 +5,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Dialog;
+
+import javafx.scene.control.*;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.stage.Stage;
+
 import java.awt.event.MouseEvent;
 import java.io.*;
+import java.util.Optional;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -126,9 +137,48 @@ public class Controller_gameplay {
         return 1;
     }
 
-    public void mainmenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+    public void ingamemenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    /*    Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
         gamepane.getChildren().setAll(p);
+    */
+
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("In-game menu");
+        alert.setHeaderText("");
+        alert.setContentText("What do you wish to do?");
+
+        /*Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+
+        stage.getIcons().add(new Image(this.getClass().getResource("Flag_Zombie.png").toString()));*/
+
+        ButtonType buttonTypeOne = new ButtonType("Restart Level");
+        ButtonType buttonTypeTwo = new ButtonType("Back to Main Menu");
+        ButtonType buttonTypeThree = new ButtonType("Save game");
+        ButtonType buttonTypeFour = new ButtonType("Exit game");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeFour, buttonTypeCancel);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeOne){
+            Pane p = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
+            gamepane.getChildren().setAll(p);
+            // ... user chose "One"
+        } else if (result.get() == buttonTypeTwo) {
+            Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+            gamepane.getChildren().setAll(p);
+            // ... user chose "Two"
+        } else if (result.get() == buttonTypeThree) {
+            Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+            gamepane.getChildren().setAll(p);
+            // ... user chose "Three"
+        } else if(result.get() == buttonTypeFour){
+            System.exit(0);
+
+        } else{
+// ... user chose CANCEL or closed the dialog
+        }
     }
 
     public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
