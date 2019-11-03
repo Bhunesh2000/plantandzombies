@@ -6,12 +6,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.animation.*;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import java.awt.*;
@@ -28,6 +34,15 @@ public class Controller_gameplay {
     private Pane gamepane;
     @FXML
     private ImageView sun;
+    @FXML
+    private ImageView peashooter;
+    @FXML
+    private ImageView sunflower;
+    @FXML
+    private GridPane grid;
+
+    private boolean ifpeashooterselected=false;
+    private boolean ifsunflowershooterselected=false;
 
     public void initialize() throws InterruptedException {
         suntokens();
@@ -83,9 +98,32 @@ public class Controller_gameplay {
 
     public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
         System.out.println("Peashoooter pressed");
+        ifpeashooterselected=true;
     }
 
     public void newsunflower(javafx.scene.input.MouseEvent mouseEvent) {
         System.out.println("Sunflower pressed");
+        ifsunflowershooterselected=true;
+    }
+
+    public void addplant(javafx.scene.input.MouseEvent mouseEvent) throws FileNotFoundException {
+        Button btn=(Button) mouseEvent.getSource();
+        int id=Integer.valueOf(btn.getId());
+        int x=id/10;
+        int y=id%10;
+        System.out.println("x= "+x+ " y="+y);
+        if(ifpeashooterselected){
+//            grid.set
+//            ImageView img=new ImageView(new Image(new FileReader("Peashooter.png"));
+//            grid.add(img,x,y);
+            System.out.println("Added peashooter");
+            ifpeashooterselected=false;
+        }
+        else if(ifsunflowershooterselected){
+//            ImageView img=new ImageView(String.valueOf(sunflower));
+//            grid.add(img,x,y);
+            System.out.println("Added sunflower");
+            ifsunflowershooterselected=false;
+        }
     }
 }
