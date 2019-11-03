@@ -144,9 +144,27 @@ public class Controller_gameplay {
 
 
         Alert alert = new Alert(AlertType.CONFIRMATION);
+
+        DialogPane dialogPane = alert.getDialogPane();
+//        dialogPane.getStylesheets().add(
+//                getClass().getResource("myDialogs.css").toExternalForm());
+//        dialogPane.getStyleClass().add("myDialog");
+//dialogPane.getStylesheets().add(this.getClass().getResource("myDialogs.css").toString());
+
+
+
+
         alert.setTitle("In-game menu");
         alert.setHeaderText("");
         alert.setContentText("What do you wish to do?");
+
+
+        /*
+        Image image = new Image(getClass().getResource("pvsz_home_page.jpeg").toExternalForm());
+        ImageView imageView = new ImageView(image);
+
+        alert.setGraphic();*/
+
 
         /*Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 
@@ -156,9 +174,20 @@ public class Controller_gameplay {
         ButtonType buttonTypeTwo = new ButtonType("Back to Main Menu");
         ButtonType buttonTypeThree = new ButtonType("Save game");
         ButtonType buttonTypeFour = new ButtonType("Exit game");
-        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        ButtonType buttonTypeCancel = new ButtonType("Back to game", ButtonData.CANCEL_CLOSE);
+
+
 
         alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeFour, buttonTypeCancel);
+
+/*
+
+        Image image = new Image(getClass().getResource("pvsz_home_page.jpeg").toExternalForm());
+
+        //ImageView imageView = new ImageView(image);
+        alert.getDialogPane().setGraphic(image);
+        alert.showAndWait();
+*/
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeOne){
