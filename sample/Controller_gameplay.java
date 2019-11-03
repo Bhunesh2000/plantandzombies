@@ -39,6 +39,14 @@ public class Controller_gameplay {
     private GridPane grid;
     @FXML
     private ImageView zombie1;
+    @FXML
+    private ImageView zombie2;
+    @FXML
+    private ImageView zombie3;
+    @FXML
+    private ImageView zombie4;
+    @FXML
+    private ImageView zombie5;
     private Image peaimage;
     private Image sunflowerimage;
     private Image zombieimage;
@@ -47,7 +55,35 @@ public class Controller_gameplay {
 
     public void initialize() throws InterruptedException {
         suntokens();
-        zombiemove();
+        int torun=0;
+        torun=zombiemove(zombie1);
+        if (torun==1){
+            torun=0;
+            System.out.println("torun chanded to "+torun);
+            torun=zombiemove(zombie2);
+            System.out.println("zombie 2 returned "+ torun);
+        }
+        if (torun==1){
+            torun=0;
+            System.out.println("torun chanded to "+torun);
+            torun=zombiemove(zombie3);
+            System.out.println("zombie 3 returned "+ torun);
+        }
+        if (torun==1){
+            torun=0;
+            System.out.println("torun chanded to "+torun);
+            torun=zombiemove(zombie4);
+            System.out.println("zombie 4 returned "+ torun);
+        }
+        if (torun==1){
+            torun=0;
+            System.out.println("torun chanded to "+torun);
+            torun=zombiemove(zombie5);
+            System.out.println("zombie 5 returned "+ torun);
+        }
+//        zombiemove(zombie3);
+//        zombiemove(zombie4);
+//        zombiemove(zombie5);
         File peafile = new File("images/pea_gif.gif");
         peaimage = new Image(peafile.toURI().toString());
         File sunflowerfile = new File("images/sunflower_gif.gif");
@@ -63,35 +99,31 @@ public class Controller_gameplay {
             sun.setLayoutX(randx);
             sun.setLayoutY(10);
             TranslateTransition tr=new TranslateTransition();
-            tr.setDuration(Duration.seconds(15));
+            tr.setDuration(Duration.seconds(30));
             tr.setToY(350);
             tr.setNode(sun);
             tr.play();
+            System.out.println("running sun");
 //            tr.stop();
             x++;
         }
     }
-    public void zombiemove(){
-//        Random randoms = new Random();
-//        double randx = 50 + (450 - 50) * randoms.nextDouble();
+    public int zombiemove(ImageView zombie){
+/*        Random randoms = new Random();
+        double randx =  + (450 - 50) * randoms.nextDouble();*/
 //        sun.setLayoutX(randx);
-        int y=(int) zombie1.getY();
+        int y=(int) zombie.getY();
 //        zombie1.setLayoutX(580);
-        zombie1.setLayoutY(100);
+//        zombie.setLayoutY(100);
         TranslateTransition tr=new TranslateTransition();
         tr.setDuration(Duration.seconds(10));
         tr.setToX(-430);
-        tr.setFromX(100);
-        tr.setNode(zombie1);
+//        tr.setFromX(100);
+        tr.setNode(zombie);
         tr.setAutoReverse(true);
+        System.out.println("running zombie");
         tr.play();
-//        while(x>100){
-//            x--;
-////            zombie1.setLayoutX(x);
-//
-////            tr.stop();
-//        }
-
+        return 1;
     }
 
     public void mainmenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
