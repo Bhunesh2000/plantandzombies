@@ -24,9 +24,12 @@ import javafx.util.Duration;
 
 
 public class Controller_gameplay {
-
-/*    @FXML
-    private Button startbutton;*/
+    @FXML
+    public ImageView wallnut;
+    @FXML
+    public ImageView cherry_bomb;
+    @FXML
+    public ImageView potatomine;
     @FXML
     private Pane gamepane;
     @FXML
@@ -47,6 +50,10 @@ public class Controller_gameplay {
     private ImageView zombie4;
     @FXML
     private ImageView zombie5;
+    @FXML
+    private javafx.scene.control.TextField countersuntoken;
+    @FXML
+    private javafx.scene.control.TextField timer;
     private Image peaimage;
     private Image sunflowerimage;
     private Image zombieimage;
@@ -55,6 +62,7 @@ public class Controller_gameplay {
 
     public void initialize() throws InterruptedException {
         suntokens();
+        timecounter();
         int torun=0;
         torun=zombiemove(zombie1);
         if (torun==1){
@@ -91,6 +99,11 @@ public class Controller_gameplay {
         File zombiefile = new File("images/zombie_moving_gif.gif");
         zombieimage = new Image(zombiefile.toURI().toString());
     }
+
+    public void timecounter(){
+        int time=Integer.valueOf(timer.getText()) ;
+        timer.setText(Integer.toString(time+1));
+    }
     public void suntokens() throws InterruptedException {
         Random randoms = new Random();
         int x=0;
@@ -107,6 +120,12 @@ public class Controller_gameplay {
 //            tr.stop();
             x++;
         }
+    }
+
+    public void suntokenclicked() throws InterruptedException {
+        int tokens=Integer.valueOf(countersuntoken.getText());
+        countersuntoken.setText(Integer.toString(tokens+1));
+        suntokens();
     }
     public int zombiemove(ImageView zombie){
 /*        Random randoms = new Random();
