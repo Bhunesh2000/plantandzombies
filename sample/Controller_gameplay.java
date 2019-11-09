@@ -35,9 +35,12 @@ import javafx.util.Duration;
 
 
 public class Controller_gameplay {
-
-/*    @FXML
-    private Button startbutton;*/
+    @FXML
+    public ImageView wallnut;
+    @FXML
+    public ImageView cherry_bomb;
+    @FXML
+    public ImageView potatomine;
     @FXML
     private Pane gamepane;
     @FXML
@@ -58,6 +61,10 @@ public class Controller_gameplay {
     private ImageView zombie4;
     @FXML
     private ImageView zombie5;
+    @FXML
+    private javafx.scene.control.TextField countersuntoken;
+    @FXML
+    private javafx.scene.control.TextField timer;
     private Image peaimage;
     private Image sunflowerimage;
     private Image zombieimage;
@@ -66,6 +73,7 @@ public class Controller_gameplay {
 
     public void initialize() throws InterruptedException {
         suntokens();
+        timecounter();
         int torun=0;
         torun=zombiemove(zombie1);
         if (torun==1){
@@ -102,6 +110,11 @@ public class Controller_gameplay {
         File zombiefile = new File("images/zombie_moving_gif.gif");
         zombieimage = new Image(zombiefile.toURI().toString());
     }
+
+    public void timecounter(){
+        int time=Integer.valueOf(timer.getText()) ;
+        timer.setText(Integer.toString(time+1));
+    }
     public void suntokens() throws InterruptedException {
         Random randoms = new Random();
         int x=0;
@@ -118,6 +131,12 @@ public class Controller_gameplay {
 //            tr.stop();
             x++;
         }
+    }
+
+    public void suntokenclicked() throws InterruptedException {
+        int tokens=Integer.valueOf(countersuntoken.getText());
+        countersuntoken.setText(Integer.toString(tokens+1));
+        suntokens();
     }
     public int zombiemove(ImageView zombie){
 /*        Random randoms = new Random();
@@ -145,30 +164,25 @@ public class Controller_gameplay {
 
         Alert alert = new Alert(AlertType.CONFIRMATION);
 
-        DialogPane dialogPane = alert.getDialogPane();
-//        dialogPane.getStylesheets().add(
-//                getClass().getResource("myDialogs.css").toExternalForm());
-//        dialogPane.getStyleClass().add("myDialog");
-//dialogPane.getStylesheets().add(this.getClass().getResource("myDialogs.css").toString());
-
-
 
 
         alert.setTitle("In-game menu");
         alert.setHeaderText("");
         alert.setContentText("What do you wish to do?");
 
-
+        //alert.setGraphic(new ImageView(this.getClass().getResource("pvz_home_page.png").toString()));
         /*
         Image image = new Image(getClass().getResource("pvsz_home_page.jpeg").toExternalForm());
         ImageView imageView = new ImageView(image);
 
         alert.setGraphic();*/
 
+/*
 
-        /*Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 
-        stage.getIcons().add(new Image(this.getClass().getResource("Flag_Zombie.png").toString()));*/
+        stage.getIcons().add(new Image(this.getClass().getResource("Flag_Zombie.png").toString()));
+*/
 
         ButtonType buttonTypeOne = new ButtonType("Restart Level");
         ButtonType buttonTypeTwo = new ButtonType("Back to Main Menu");
@@ -188,6 +202,8 @@ public class Controller_gameplay {
         alert.getDialogPane().setGraphic(image);
         alert.showAndWait();
 */
+
+
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeOne){
