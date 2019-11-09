@@ -41,6 +41,9 @@ public class Controller_gameplay {
     public ImageView cherry_bomb;
     @FXML
     public ImageView potatomine;
+    public ImageView pea1;
+    public ImageView pea2;
+    public ImageView pea3;
     @FXML
     private Pane gamepane;
     @FXML
@@ -74,35 +77,14 @@ public class Controller_gameplay {
     public void initialize() throws InterruptedException {
         suntokens();
         timecounter();
-        int torun=0;
-        torun=zombiemove(zombie1);
-        if (torun==1){
-            torun=0;
-            System.out.println("torun chanded to "+torun);
-            torun=zombiemove(zombie2);
-            System.out.println("zombie 2 returned "+ torun);
-        }
-        if (torun==1){
-            torun=0;
-            System.out.println("torun chanded to "+torun);
-            torun=zombiemove(zombie3);
-            System.out.println("zombie 3 returned "+ torun);
-        }
-        if (torun==1){
-            torun=0;
-            System.out.println("torun chanded to "+torun);
-            torun=zombiemove(zombie4);
-            System.out.println("zombie 4 returned "+ torun);
-        }
-        if (torun==1){
-            torun=0;
-            System.out.println("torun chanded to "+torun);
-            torun=zombiemove(zombie5);
-            System.out.println("zombie 5 returned "+ torun);
-        }
-//        zombiemove(zombie3);
-//        zombiemove(zombie4);
-//        zombiemove(zombie5);
+        zombiemove(zombie1);
+        zombiemove(zombie2);
+        zombiemove(zombie3);
+        zombiemove(zombie4);
+        zombiemove(zombie5);
+        peafiring(pea1);
+        peafiring(pea2);
+        peafiring(pea3);
         File peafile = new File("images/pea_gif.gif");
         peaimage = new Image(peafile.toURI().toString());
         File sunflowerfile = new File("images/sunflower_gif.gif");
@@ -110,7 +92,14 @@ public class Controller_gameplay {
         File zombiefile = new File("images/zombie_moving_gif.gif");
         zombieimage = new Image(zombiefile.toURI().toString());
     }
-
+    public void peafiring(ImageView pea){
+        pea.setX(200);
+        TranslateTransition tr=new TranslateTransition();
+        tr.setDuration(Duration.seconds(15));
+        tr.setToX(550);
+        tr.setNode(pea);
+        tr.play();
+    }
     public void timecounter(){
         int time=Integer.valueOf(timer.getText()) ;
         timer.setText(Integer.toString(time+1));
@@ -139,18 +128,10 @@ public class Controller_gameplay {
         suntokens();
     }
     public int zombiemove(ImageView zombie){
-/*        Random randoms = new Random();
-        double randx =  + (450 - 50) * randoms.nextDouble();*/
-//        sun.setLayoutX(randx);
-        int y=(int) zombie.getY();
-//        zombie1.setLayoutX(580);
-//        zombie.setLayoutY(100);
         TranslateTransition tr=new TranslateTransition();
-        tr.setDuration(Duration.seconds(10));
-        tr.setToX(-430);
-//        tr.setFromX(100);
+        tr.setDuration(Duration.seconds(25));
+        tr.setToX(-440);
         tr.setNode(zombie);
-        tr.setAutoReverse(true);
         System.out.println("running zombie");
         tr.play();
         return 1;
