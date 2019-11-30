@@ -34,7 +34,7 @@ public class Peashooter extends Shooter {
 
     }
     public ImageView imgview(){
-        ImageView pa=new ImageView(pea);
-        return pa;
+        ImageView imgv=new ImageView(pea);
+        return imgv;
     }
 }
