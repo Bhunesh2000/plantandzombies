@@ -36,7 +36,7 @@ import java.util.concurrent.TimeUnit;
 import javafx.util.Duration;
 
 
-public class Controller_Level2 {
+public class Controller_Level3 {
 
     boolean peashooterclicked_var=false;
 
@@ -56,6 +56,7 @@ public class Controller_Level2 {
 
     private boolean ifpeashooterselected=false;
     private boolean ifsunflowershooterselected=false;
+    private boolean ifcherrybombselected=false;
 
     File peafile = new File("C:\\approject\\src\\sample\\images\\pea_gif.gif");
     private Image peaimage = new Image(peafile.toURI().toString());
@@ -63,10 +64,17 @@ public class Controller_Level2 {
     private Image sunflowerimage = new Image(sunflowerfile.toURI().toString());
     File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
     private Image zombieimage = new Image(zombiefile.toURI().toString());
+    File cherrybombfile = new File("C:\\approject\\src\\sample\\images\\cherry.mp4");
+    private Image cherrybombimage = new Image(cherrybombfile.toURI().toString());
 
     public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
         System.out.println("Peashoooter pressed");
         ifpeashooterselected=true;
+    }
+
+    public void newcherrybomb(javafx.scene.input.MouseEvent mouseEvent) {
+        System.out.println("Cherrybomb pressed");
+        ifcherrybombselected=true;
     }
 
     public void newsunflower(javafx.scene.input.MouseEvent mouseEvent) {
@@ -87,7 +95,7 @@ public class Controller_Level2 {
             imageView0_0.setTranslateX(50);
             imageView0_0.setTranslateY(50);
 
-           // for(Node node: grid.getC )
+            // for(Node node: grid.getC )
 
             System.out.println("Peashooter placed");
         }
@@ -111,12 +119,21 @@ public class Controller_Level2 {
             ifpeashooterselected=false;
 
         }
+
         else if(ifsunflowershooterselected){
 //            ImageView img=new ImageView(String.valueOf(sunflower));
 //            grid.add(img,x,y);
             imgpressed.setImage(sunflowerimage);
             System.out.println("Added sunflower");
             ifsunflowershooterselected=false;
+        }
+
+        else if(ifcherrybombselected){
+//            ImageView img=new ImageView(String.valueOf(sunflower));
+//            grid.add(img,x,y);
+            imgpressed.setImage(cherrybombimage);
+            System.out.println("Added cherrybomb");
+            ifcherrybombselected=false;
         }
     }
 

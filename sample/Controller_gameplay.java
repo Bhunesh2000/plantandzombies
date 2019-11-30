@@ -85,6 +85,7 @@ public class Controller_gameplay {
         zombiemove(zombie3);
         zombiemove(zombie4);
         zombiemove(zombie5);
+        zombiemove(zombieCreate());
         peafiring(pea1);
         peafiring(pea2);
         peafiring(pea3);
@@ -139,7 +140,7 @@ public class Controller_gameplay {
 
     public void ingamemenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
-pause=true;
+
 /*        Alert alert = new Alert(AlertType.CONFIRMATION);
 
 
@@ -242,7 +243,7 @@ pause=true;
         Zombies zombie1= new Zombies();
         zombie_list.add(zombie1);
 
-        File zombiefile = new File("images/zombie_moving_gif.gif");
+        File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
         Image zombieimage = new Image(zombiefile.toURI().toString());
 
         ImageView zombieimageview = new ImageView(zombieimage);
