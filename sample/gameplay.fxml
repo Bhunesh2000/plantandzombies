@@ -37,31 +37,6 @@
             <Image url="@images/menu.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="zombie5" fitHeight="119.0" fitWidth="79.0" layoutX="1445.0" layoutY="660.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/zombie_moving_gif.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="zombie4" fitHeight="122.0" fitWidth="85.0" layoutX="1448.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/zombie_moving_gif.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="zombie3" fitHeight="108.0" fitWidth="98.0" layoutX="1462.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/zombie_moving_gif.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="zombie2" fitHeight="124.0" fitWidth="122.0" layoutX="1461.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/zombie_moving_gif.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="zombie1" fitHeight="121.0" fitWidth="93.0" layoutX="1422.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/zombie_moving_gif.gif" />
-         </image>
-      </ImageView>
       <ImageView fx:id="sunflower1" fitHeight="48.0" fitWidth="77.0" layoutX="19.0" layoutY="173.0" onMouseClicked="#newsunflower" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Cherry_Bomb2.png" />
@@ -119,11 +94,12 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.6667175292969" minWidth="10.0" prefWidth="107.40007324218749" />
             <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="264.46661376953125" minWidth="10.0" prefWidth="124.40000000000003" />
             <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="226.0" minWidth="10.0" prefWidth="115.59995117187498" />
-            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="206.800048828125" minWidth="10.0" prefWidth="119.06668701171873" />
-            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="109.73331298828123" />
-            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="108.4000244140625" />
-            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="169.39990234375" minWidth="10.0" prefWidth="114.79999999999995" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.6666259765625" minWidth="10.0" prefWidth="122.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="206.800048828125" minWidth="10.0" prefWidth="122.20000000000005" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="123.80000000000007" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="118.59995117187498" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="114.39995117187505" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="212.20000000000005" minWidth="10.0" prefWidth="122.79999999999995" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.6666259765625" minWidth="3.400000000000091" prefWidth="3.400000000000091" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="224.9333251953125" minHeight="10.0" prefHeight="138.79999389648438" vgrow="SOMETIMES" />
@@ -133,7 +109,55 @@
           <RowConstraints maxHeight="441.1999877929687" minHeight="10.0" prefHeight="154.80002441406248" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <ImageView fitHeight="150.0" fitWidth="120.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
             <ImageView fitHeight="150.0" fitWidth="117.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ImageView fitHeight="138.0" fitWidth="121.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="120.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="119.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="109.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="107.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="106.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ImageView fitHeight="140.0" fitWidth="109.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="107.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="126.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="125.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="127.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="126.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="123.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="117.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="114.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="114.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="118.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="116.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="119.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+            <ImageView fitHeight="150.0" fitWidth="122.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="122.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="121.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="119.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="108.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <ImageView fitHeight="138.0" fitWidth="110.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="108.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="111.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="113.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
+            <ImageView fitHeight="150.0" fitWidth="108.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
+            <ImageView fitHeight="150.0" fitWidth="108.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="107.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="113.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="112.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="98.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+            <ImageView fitHeight="150.0" fitWidth="114.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="110.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="112.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="112.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" />
+            <ImageView fitHeight="150.0" fitWidth="117.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" />
+            <ImageView fitHeight="150.0" fitWidth="120.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+            <ImageView fitHeight="150.0" fitWidth="119.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="118.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="118.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

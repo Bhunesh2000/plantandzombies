@@ -1,31 +1,20 @@
 package sample;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Dialog;
 
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar.ButtonData;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 import javafx.animation.*;
 import javafx.scene.image.Image;
@@ -61,6 +50,8 @@ public class Controller_gameplay {
     private ImageView sunflower;
     @FXML
     private GridPane grid;
+
+
     @FXML
     private ImageView zombie1;
     @FXML
@@ -71,6 +62,19 @@ public class Controller_gameplay {
     private ImageView zombie4;
     @FXML
     private ImageView zombie5;
+    @FXML
+    private ImageView zombie6;
+    @FXML
+    private ImageView zombie7;
+    @FXML
+    private ImageView zombie8;
+    @FXML
+    private ImageView zombie9;
+    @FXML
+    private ImageView zombie10;
+
+
+
     @FXML
     private javafx.scene.control.TextField countersuntoken;
     @FXML
@@ -83,15 +87,20 @@ public class Controller_gameplay {
 
     private boolean pause=false;
 
-    public void initialize() throws InterruptedException {
+    public void initialize() throws InterruptedException,MalformedURLException {
         suntokens();
         timecounter();
-        zombiemove(zombie1);
+        /*zombiemove(zombie1);
         zombiemove(zombie2);
         zombiemove(zombie3);
         zombiemove(zombie4);
-        zombiemove(zombie5);
-        zombiemove(zombieCreate());
+        zombiemove(zombie5);*/
+        zombieCreateMove(120,15);
+        zombieCreateMove(270,25);
+        zombieCreateMove(420,20);
+        zombieCreateMove(570,30);
+        zombieCreateMove(720,18);
+
 //        peafiring(pea1);
 //        peafiring(pea2);
 //        peafiring(pea3);
@@ -134,7 +143,7 @@ public class Controller_gameplay {
 
     public void suntokenclicked() throws InterruptedException {
         int tokens=Integer.valueOf(countersuntoken.getText());
-        countersuntoken.setText(Integer.toString(tokens+1));
+        countersuntoken.setText(Integer.toString(tokens+25));
         suntokens();
     }
     public int zombiemove(ImageView zombie){
@@ -173,7 +182,7 @@ public class Controller_gameplay {
         System.out.println("ifsunflowershooterselected="+ifsunflowershooterselected);
         if(ifpeashooterselected){
             System.out.println("Added peashooter");
-            Shooter p=new Peashooter(imgpressed,gamepane);
+            Shooter p=new Peashooter(imgpressed,gamepane); //polymorphism
             ifpeashooterselected=false;
             int delay = 5;
             Timer t=new Timer();
@@ -204,28 +213,40 @@ public class Controller_gameplay {
         }
     }
 
-    public ImageView zombieCreate(){
-        Zombies zombie1= new Zombies();
-        zombie_list.add(zombie1);
+    public void zombieCreateMove(double mycoordinate, int time) throws MalformedURLException{
+        Zombies zom=new Zombies(gamepane); //polymorphism
+        double mx=1600;
 
-        File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
-        Image zombieimage = new Image(zombiefile.toURI().toString());
-
-        ImageView zombieimageview = new ImageView(zombieimage);
-
-    /*    zombieimageview.setPreserveRatio(true);
-        zombieimageview.setCache(true);*/
-        zombieimageview.setFitHeight(40);
-        zombieimageview.setFitWidth(40);
+        double mx_final=mx;
 
 
+    double my=mycoordinate;
 
-       // zombieimageview.relocate(100,100);
-        gamepane.getChildren().addAll(zombieimageview);
-        zombieimageview.setLayoutX(-200);
-        zombieimageview.setLayoutY(200);
-        System.out.println("added");
-        return zombieimageview;
+      // double my=mycoordinate;
+
+        Timer t=new Timer();
+            t.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    ImageView imgv=zom.imgview();
+                    imgv.setFitHeight(125);
+                    imgv.setFitWidth(80);
+                    gamepane.getChildren().add(imgv);
+                    System.out.println("zombie moving");
+                    System.out.println("x= "+mx+" y="+ my);
+                    imgv.relocate(mx-50, my);
+                    TranslateTransition tr=new TranslateTransition();
+                    tr.setDuration(Duration.seconds(25));
+                    tr.setToX(mx_final-2900);
+                    tr.setNode(imgv);
+                    System.out.println("transition set");
+                    tr.play();
+                });
+            }
+        }, 0, time*1000);
+
+
 
     }
     public void ingamemenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
