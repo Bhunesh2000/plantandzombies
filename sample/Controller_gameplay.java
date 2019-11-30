@@ -101,7 +101,7 @@ public class Controller_gameplay {
         zombieimage = new Image(zombiefile.toURI().toString());
         File fsun=new File("C:\\approject\\src\\sample\\images\\sun.png");
         sun=new Image(fsun.toURI().toString());
-        peafiring();
+//        peafiring();
 
         Timer t=new Timer();
         t.scheduleAtFixedRate(new TimerTask() {
@@ -123,10 +123,10 @@ public class Controller_gameplay {
         ImageView pea=new ImageView(p);
         gamepane.getChildren().add(pea);
         pea.setX(200);
-        pea.setY(200);
+        pea.setY(800);
         TranslateTransition tr=new TranslateTransition();
-        tr.setDuration(Duration.seconds(15));
-        tr.setToX(550);
+        tr.setDuration(Duration.seconds(5));
+        tr.setToX(1550);
         tr.setNode(pea);
         tr.play();
     }

@@ -84,7 +84,7 @@ public class Controller_Level5 {
 
     public void newsunflower(javafx.scene.input.MouseEvent mouseEvent) {
         System.out.println("Sunflower pressed");
-        ifsunflowershooterselected=true;
+        ifsunflowershooterselected=true;;
     }
     @FXML
     private void place(javafx.scene.input.MouseEvent mouseEvent){
