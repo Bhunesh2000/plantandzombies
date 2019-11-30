@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.awt.event.MouseEvent;
 import java.io.*;
+import java.sql.Time;
 import java.util.Optional;
 import java.net.URL;
 import java.util.Random;
@@ -34,6 +35,8 @@ import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 import javafx.util.Duration;
+
+import static java.lang.Thread.sleep;
 
 
 public class Controller_Level5 {
@@ -56,6 +59,7 @@ public class Controller_Level5 {
 
     private boolean ifpeashooterselected=false;
     private boolean ifsunflowershooterselected=false;
+    private boolean ifcherrybombselected=false;
 
     File peafile = new File("C:\\approject\\src\\sample\\images\\pea_gif.gif");
     private Image peaimage = new Image(peafile.toURI().toString());
@@ -63,10 +67,19 @@ public class Controller_Level5 {
     private Image sunflowerimage = new Image(sunflowerfile.toURI().toString());
     File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
     private Image zombieimage = new Image(zombiefile.toURI().toString());
-
+    File cherrybombfile = new File("C:\\approject\\src\\sample\\images\\cherrybomb.gif");
+    private Image cherrybombimage = new Image(cherrybombfile.toURI().toString());
+    /*File cherrybombblastfile = new File("C:\\approject\\src\\sample\\images\\cherrybomb.png");
+    private Image cherrybombblastimage = new Image("https://www.animatedimages.org/data/media/1176/animated-explosion-image-0001.gif");
+*/
     public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
         System.out.println("Peashoooter pressed");
         ifpeashooterselected=true;
+    }
+
+    public void newcherrybomb(javafx.scene.input.MouseEvent mouseEvent) {
+        System.out.println("Cherrybomb pressed");
+        ifcherrybombselected=true;
     }
 
     public void newsunflower(javafx.scene.input.MouseEvent mouseEvent) {
@@ -93,30 +106,39 @@ public class Controller_Level5 {
         }
     }
 
-    public void addplant(javafx.scene.input.MouseEvent mouseEvent) throws FileNotFoundException {
-        ImageView imgpressed=(ImageView) mouseEvent.getSource();
+    public void addplant(javafx.scene.input.MouseEvent mouseEvent) throws FileNotFoundException,InterruptedException {
+        ImageView imgpressed = (ImageView) mouseEvent.getSource();
         System.out.println(imgpressed.getClass());
 //        int id=Integer.valueOf(imgpressed.getId());
 //        int x=id/10;
 //        int y=id%10;
 //        System.out.println("x= "+x+ " y="+y);
-        System.out.println(" ifpeashooterselecte= "+ifpeashooterselected);
-        System.out.println("ifsunflowershooterselected="+ifsunflowershooterselected);
-        if(ifpeashooterselected){
+        System.out.println(" ifpeashooterselecte= " + ifpeashooterselected);
+        System.out.println("ifsunflowershooterselected=" + ifsunflowershooterselected);
+        if (ifpeashooterselected) {
 //            grid.set
 //            ImageView img=new ImageView(new Image(new FileReader("Peashooter.png"));
 //            grid.add(img,x,y);
             imgpressed.setImage(peaimage);
             System.out.println("Added peashooter");
-            ifpeashooterselected=false;
+            ifpeashooterselected = false;
 
-        }
-        else if(ifsunflowershooterselected){
+        } else if (ifsunflowershooterselected) {
 //            ImageView img=new ImageView(String.valueOf(sunflower));
 //            grid.add(img,x,y);
             imgpressed.setImage(sunflowerimage);
             System.out.println("Added sunflower");
-            ifsunflowershooterselected=false;
+            ifsunflowershooterselected = false;
+        } else if (ifcherrybombselected) {
+//            ImageView img=new ImageView(String.valueOf(sunflower));
+//            grid.add(img,x,y);
+            imgpressed.setImage(cherrybombimage);
+            //sleep(5000);
+            //imgpressed.setImage(cherrybombblastimage);
+            long cherry = System.currentTimeMillis();
+
+            System.out.println("Added cherrybomb");
+            ifcherrybombselected = false;
         }
     }
 

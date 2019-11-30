@@ -19,6 +19,12 @@
                 <Image url="@images/peashooter2.png" />
             </image>
         </ImageView>
+        <ImageView fx:id="sunflower" fitHeight="31.0" fitWidth="47.0" layoutX="-1.0" layoutY="22.0" onMouseClicked="#newsunflower" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/Sunflower2.png" />
+            </image>
+        </ImageView>
+
         <GridPane fx:id="grid" layoutX="136.0" layoutY="45.0" prefHeight="252.0" prefWidth="402.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79998779296875" minWidth="10.0" prefWidth="44.80003662109375" />
@@ -87,15 +93,15 @@
                 <ImageView fitHeight="40.0" fitWidth="54.0" onMouseClicked="#addplant" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-        <ImageView fx:id="sunflower" fitHeight="31.0" fitWidth="47.0" layoutX="-1.0" layoutY="22.0" onMouseClicked="#newsunflower" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="17.0" fitWidth="54.0" layoutX="544.0" layoutY="2.0" onMouseClicked="#ingamemenu" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/Sunflower2.png" />
+                <Image url="@images/menu.png" />
             </image>
         </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="54.0" layoutX="538.0" onMouseClicked="#ingamemenu" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/menu.png" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="25.0" fitWidth="49.0" layoutX="-2.0" layoutY="45.0" onMouseClicked="#newcherrybomb" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/Cherry_Bomb2.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>
