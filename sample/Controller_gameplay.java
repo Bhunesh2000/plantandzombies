@@ -41,7 +41,8 @@ import javafx.util.Duration;
 
 public class Controller_gameplay {
 
-   ArrayList<Zombies> zombie_list=new ArrayList<Zombies>();
+    public Button countersuntoken;
+    ArrayList<Zombies> zombie_list=new ArrayList<Zombies>();
     @FXML
     public ImageView wallnut;
     @FXML
@@ -52,9 +53,7 @@ public class Controller_gameplay {
     public ImageView pea2;
     public ImageView pea3;
     @FXML
-    private Pane gamepane;
-    @FXML
-    private ImageView sun;
+    public Pane gamepane;
     @FXML
     private ImageView peashooter;
     @FXML
@@ -71,16 +70,25 @@ public class Controller_gameplay {
     private ImageView zombie4;
     @FXML
     private ImageView zombie5;
+
     @FXML
-    private javafx.scene.control.TextField countersuntoken;
-    @FXML
-    private javafx.scene.control.TextField timer;
+    private Button timer;
     private Image peaimage;
+    private Image sun;
     private Image sunflowerimage;
     private Image zombieimage;
     private boolean ifpeashooterselected=false;
     private boolean ifsunflowershooterselected=false;
-
+    private ArrayList<ImageView> thobjects0;
+    private ArrayList<ImageView> thobjects1;
+    private ArrayList<ImageView> thobjects2;
+    private ArrayList<ImageView> thobjects3;
+    private ArrayList<ImageView> thobjects4;
+    private ArrayList<Plants> plants0;
+    private ArrayList<Plants> plants1;
+    private ArrayList<Plants> plants2;
+    private ArrayList<Plants> plants3;
+    private ArrayList<Plants> plants4;
     private boolean pause=false;
 
     public void initialize() throws InterruptedException {
@@ -92,22 +100,37 @@ public class Controller_gameplay {
         zombiemove(zombie4);
         zombiemove(zombie5);
         zombiemove(zombieCreate());
-//        peafiring(pea1);
-//        peafiring(pea2);
-//        peafiring(pea3);
         File peafile = new File("C:\\approject\\src\\sample\\images\\pea_gif.gif");
         peaimage = new Image(peafile.toURI().toString());
         File sunflowerfile = new File("C:\\approject\\src\\sample\\images\\sunflower_gif.gif");
         sunflowerimage = new Image(sunflowerfile.toURI().toString());
         File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
         zombieimage = new Image(zombiefile.toURI().toString());
+        File fsun=new File("C:\\approject\\src\\sample\\images\\sun.png");
+        sun=new Image(fsun.toURI().toString());
+        peafiring();
+
+        Timer t=new Timer();
+        t.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    try {
+                        suntokens();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+        },0,10*1000);
     }
-    public void peafiring(ImageView pa){
+    public void peafiring(){
         File f=new File("C:\\approject\\src\\sample\\images\\pea.png");
         Image p=new Image(f.toURI().toString());
         ImageView pea=new ImageView(p);
         gamepane.getChildren().add(pea);
         pea.setX(200);
+        pea.setY(200);
         TranslateTransition tr=new TranslateTransition();
         tr.setDuration(Duration.seconds(15));
         tr.setToX(550);
@@ -115,27 +138,36 @@ public class Controller_gameplay {
         tr.play();
     }
     public void timecounter(){
-        int time=Integer.valueOf(timer.getText()) ;
+        int time=Integer.parseInt(timer.getText()) ;
         timer.setText(Integer.toString(time+1));
     }
-    public void suntokens() throws InterruptedException {
+    public void suntokens() throws InterruptedException{
+        ImageView sn=new ImageView(sun);
+        sn.setOnMouseClicked(MouseEvent -> {
+            int tokens=Integer.parseInt(countersuntoken.getText());
+            countersuntoken.setText(Integer.toString(tokens+1));
+            ImageView img=(ImageView) MouseEvent.getSource();
+            gamepane.getChildren().remove(img);
+        });
+        gamepane.getChildren().add(sn);
         Random randoms = new Random();
-        double randx = 120 + (450 - 50) * randoms.nextDouble();
-        sun.setLayoutX(randx);
-        sun.setLayoutY((double)10);
+        double randx = 400 + (1000) * randoms.nextDouble();
+        sn.relocate(randx,10);
+//        sun.setLayoutX(randx);
+//        sun.setLayoutY((double)10);
         TranslateTransition tr=new TranslateTransition();
-        tr.setDuration(Duration.seconds(30));
-        tr.setToY(350);
-        tr.setNode(sun);
+        tr.setDuration(Duration.seconds(45));
+        tr.setToY(750);
+        tr.setNode(sn);
         tr.play();
-        System.out.println("running sun");
-//      tr.stop();
+        System.out.println(" sun created");
     }
 
-    public void suntokenclicked() throws InterruptedException {
-        int tokens=Integer.valueOf(countersuntoken.getText());
+    public void suntokenclicked(MouseEvent msevent) throws InterruptedException {
+        int tokens=Integer.parseInt(countersuntoken.getText());
         countersuntoken.setText(Integer.toString(tokens+1));
-        suntokens();
+//        ImageView img=(ImageView) MouseEvent.getSource();
+//        gamepane.getChildren().remove(img);
     }
     public int zombiemove(ImageView zombie){
         System.out.println(" imageview "+zombie);
@@ -173,19 +205,20 @@ public class Controller_gameplay {
         System.out.println("ifsunflowershooterselected="+ifsunflowershooterselected);
         if(ifpeashooterselected){
             System.out.println("Added peashooter");
+//            addtoplantarray();
             Shooter p=new Peashooter(imgpressed,gamepane);
             ifpeashooterselected=false;
-            int delay = 5;
             Timer t=new Timer();
             t.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
                     Platform.runLater(() -> {
                         ImageView imgv=p.imgview();
+//                        addtoimgarray();
                         gamepane.getChildren().add(imgv);
                         System.out.println("peafiring called");
                         System.out.println("x= "+mx+" y="+my);
-                        imgv.relocate(mx+50,my-40);
+                        imgv.relocate(mx+50,my-45);
                         TranslateTransition tr=new TranslateTransition();
                         tr.setDuration(Duration.seconds(15));
                         tr.setToX(1600);
@@ -203,7 +236,12 @@ public class Controller_gameplay {
             ifsunflowershooterselected=false;
         }
     }
+    public void addtoplantarray(Plants plnt,double y){
+//        if (double y>)
+    }
+    public void addtoimgarray(ImageView imgv,double y){
 
+    }
     public ImageView zombieCreate(){
         Zombies zombie1= new Zombies();
         zombie_list.add(zombie1);

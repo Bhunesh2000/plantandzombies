@@ -18,12 +18,12 @@ public class Peashooter extends Shooter {
     public Peashooter(ImageView imgv, Pane pane) throws MalformedURLException {
         File peashooterfile = new File("C:\\approject\\src\\sample\\images\\pea_gif.gif");
         peashooter=new Image(peashooterfile.toURI().toString());
-        File peafile = new File("C:\\approject\\src\\sample\\images\\pea.png");
-        pea = new Image(peafile.toURI().toString());
         imgv.setImage(peashooter);
         x=imgv.getX();
         y=imgv.getY();
         pane=this.pane;
+        File peafile = new File("C:\\approject\\src\\sample\\images\\pea.png");
+        pea=new Image(peafile.toURI().toString());
     }
     @Override
     public void run(){
