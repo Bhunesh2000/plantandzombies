@@ -1,5 +1,7 @@
 package sample;
 
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.stage.Stage;
 
 import java.awt.event.MouseEvent;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.net.URL;
 import java.util.Random;
@@ -38,6 +41,8 @@ import javafx.util.Duration;
 
 
 public class Controller_gameplay {
+
+   ArrayList<Zombies> zombie_list=new ArrayList<Zombies>();
     @FXML
     public ImageView wallnut;
     @FXML
@@ -89,6 +94,7 @@ public class Controller_gameplay {
           zombiemove(zombie3);
           zombiemove(zombie4);
           zombiemove(zombie5);
+          zombiemove(zombieCreate());
           peafiring(pea1);
           peafiring(pea2);
           peafiring(pea3);
@@ -136,6 +142,7 @@ public class Controller_gameplay {
         suntokens();
     }
     public int zombiemove(ImageView zombie){
+        System.out.println(" imageview "+zombie);
         TranslateTransition tr=new TranslateTransition();
         tr.setDuration(Duration.seconds(25));
         tr.setToX(-440);
@@ -235,4 +242,30 @@ pause=true;
             ifsunflowershooterselected=false;
         }
     }
+
+    public ImageView zombieCreate(){
+        Zombies zombie1= new Zombies();
+        zombie_list.add(zombie1);
+
+        File zombiefile = new File("images/zombie_moving_gif.gif");
+        Image zombieimage = new Image(zombiefile.toURI().toString());
+
+        ImageView zombieimageview = new ImageView(zombieimage);
+
+    /*    zombieimageview.setPreserveRatio(true);
+        zombieimageview.setCache(true);*/
+        zombieimageview.setFitHeight(40);
+        zombieimageview.setFitWidth(40);
+
+
+
+       // zombieimageview.relocate(100,100);
+        gamepane.getChildren().addAll(zombieimageview);
+        zombieimageview.setLayoutX(-200);
+        zombieimageview.setLayoutY(200);
+        System.out.println("added");
+        return zombieimageview;
+
+    }
+
 }

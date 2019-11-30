@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Node;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Dialog;
 
@@ -44,17 +45,23 @@ public class Controller_Level2 {
         System.out.println("pea shooter clicked");
         peashooterclicked_var=true;
     }
+
+
     @FXML
     private void place(javafx.scene.input.MouseEvent mouseEvent){
+         imageView0_0=(ImageView) mouseEvent.getSource();
         System.out.println(peashooterclicked_var+" peashooterclicked_var");
         if(peashooterclicked_var==true){
-            File peashooterfile = new File("images/pea_gif.gif");
+            File peashooterfile = new File("\\images\\pea_gif.gif");
             Image peashooterImage= new Image(peashooterfile.toURI().toString());
             imageView0_0.setImage(peashooterImage);
             imageView0_0.minHeight(50);
             imageView0_0.minWidth(50);
             imageView0_0.setTranslateX(50);
             imageView0_0.setTranslateY(50);
+
+           // for(Node node: grid.getC )
+
             System.out.println("Peashooter placed");
         }
     }

@@ -3,8 +3,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="321.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_Level2">
+<AnchorPane prefHeight="321.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_Level2">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -16,9 +19,30 @@
             <Image url="@images/peashooter2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imageView0_0" fitHeight="64.0" fitWidth="45.0" layoutX="138.0" layoutY="42.0" onMouseClicked="#place" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/pea_gif.gif" />
-         </image></ImageView>
+      <GridPane fx:id="grid" layoutX="136.0" layoutY="45.0" prefHeight="252.0" prefWidth="402.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79998779296875" minWidth="10.0" prefWidth="44.80003662109375" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.20001220703125" minWidth="0.0" prefWidth="39.19996337890625" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.20001220703125" minWidth="2.799999999999997" prefWidth="49.60001220703124" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.20001220703125" minWidth="0.0" prefWidth="41.600012207031256" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.20001220703125" minWidth="0.0" prefWidth="44.20002441406251" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.20001220703125" minWidth="10.0" prefWidth="39.399987792968716" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.20001220703125" minWidth="0.0" prefWidth="43.400012207031295" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.20001220703125" minWidth="10.0" prefWidth="42.80001220703127" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.20001220703125" minWidth="0.0" prefWidth="55.599945068359375" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="63.99998779296875" minHeight="10.0" prefHeight="50.399993896484375" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="64.00000610351563" minHeight="9.600012207031249" prefHeight="53.400006103515615" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="57.399993896484375" minHeight="0.0" prefHeight="57.399993896484375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.8" minHeight="10.0" prefHeight="47.79998779296875" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="48.80000000000001" minHeight="0.0" prefHeight="44.59998779296873" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fitHeight="67.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="49.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+            <ImageView fitHeight="54.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
