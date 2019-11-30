@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,8 +16,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import java.io.*;
+import java.net.MalformedURLException;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import javafx.animation.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -79,9 +87,9 @@ public class Controller_gameplay {
         zombiemove(zombie3);
         zombiemove(zombie4);
         zombiemove(zombie5);
-        peafiring(pea1);
-        peafiring(pea2);
-        peafiring(pea3);
+//        peafiring(pea1);
+//        peafiring(pea2);
+//        peafiring(pea3);
         File peafile = new File("C:\\approject\\src\\sample\\images\\pea_gif.gif");
         peaimage = new Image(peafile.toURI().toString());
         File sunflowerfile = new File("C:\\approject\\src\\sample\\images\\sunflower_gif.gif");
@@ -89,7 +97,11 @@ public class Controller_gameplay {
         File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
         zombieimage = new Image(zombiefile.toURI().toString());
     }
-    public void peafiring(ImageView pea){
+    public void peafiring(ImageView pa){
+        File f=new File("C:\\approject\\src\\sample\\images\\pea.png");
+        Image p=new Image(f.toURI().toString());
+        ImageView pea=new ImageView(p);
+        gamepane.getChildren().add(pea);
         pea.setX(200);
         TranslateTransition tr=new TranslateTransition();
         tr.setDuration(Duration.seconds(15));
@@ -130,9 +142,68 @@ public class Controller_gameplay {
         return 1;
     }
 
+    public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
+        System.out.println("Peashoooter pressed");
+        ifpeashooterselected=true;
+    }
+
+    public void newsunflower(javafx.scene.input.MouseEvent mouseEvent) {
+        System.out.println("Sunflower pressed");
+        ifsunflowershooterselected=true;
+    }
+    @FXML
+    private void mouseEntered(MouseEvent e) throws FileNotFoundException, MalformedURLException {
+        System.out.println("x="+e.getX()+" y="+e.getY());
+        Node source = (Node)e.getSource() ;
+        Integer colIndex = GridPane.getColumnIndex(source);
+        Integer rowIndex = GridPane.getRowIndex(source);
+        System.out.println("Mouse entered cell , x="+rowIndex+ " ,y="+colIndex);
+    }
+
+    public void addplant(javafx.scene.input.MouseEvent mouseEvent) throws FileNotFoundException, MalformedURLException {
+        double mx=mouseEvent.getSceneX();
+        double my=mouseEvent.getSceneY();
+        ImageView imgpressed=(ImageView) mouseEvent.getSource();
+        System.out.println(" ifpeashooterselecte= "+ifpeashooterselected);
+        System.out.println("ifsunflowershooterselected="+ifsunflowershooterselected);
+        if(ifpeashooterselected){
+//            ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+            System.out.println("Added peashooter");
+            Shooter p=new Peashooter(imgpressed,gamepane);
+            ifpeashooterselected=false;
+            int delay = 5;
+            Timer t=new Timer();
+            t.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(() -> {
+                        ImageView imgv=p.imgview();
+                        gamepane.getChildren().add(imgv);
+                        System.out.println("peafiring called");
+                        System.out.println("x= "+mx+" y="+my);
+                        imgv.relocate(mx+50,my-40);
+//                        imgv.setX(imgpressed.getX());
+//                        imgv.setY(imgpressed.getY());
+                        TranslateTransition tr=new TranslateTransition();
+                        tr.setDuration(Duration.seconds(15));
+                        tr.setToX(1600);
+                        tr.setNode(imgv);
+                        System.out.println("transition set");
+                        tr.play();
+                    });
+                }
+            }, 0, 5*1000);
+            ifpeashooterselected=false;
+        }
+        else if(ifsunflowershooterselected){
+            imgpressed.setImage(sunflowerimage);
+            System.out.println("Added sunflower");
+            ifsunflowershooterselected=false;
+        }
+    }
     public void ingamemenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
-pause=true;
+        pause=true;
 /*        Alert alert = new Alert(AlertType.CONFIRMATION);
 
 
@@ -178,56 +249,13 @@ pause=true;
         } else{
         }*/
 
-    Parent root = FXMLLoader.load(getClass().getResource("ingamemenu.fxml"));
-    Scene scene = new Scene(root);
-    Stage stage=new Stage();
-    stage.setTitle("In game menu");
-    stage.setScene(scene);
-    stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("ingamemenu.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage=new Stage();
+        stage.setTitle("In game menu");
+        stage.setScene(scene);
+        stage.show();
 
         ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-    }
-
-    public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
-        System.out.println("Peashoooter pressed");
-        ifpeashooterselected=true;
-    }
-
-    public void newsunflower(javafx.scene.input.MouseEvent mouseEvent) {
-        System.out.println("Sunflower pressed");
-        ifsunflowershooterselected=true;
-    }
-    @FXML
-    private void mouseEntered(MouseEvent e) {
-        Node source = (Node)e.getSource() ;
-        Integer colIndex = GridPane.getColumnIndex(source);
-        Integer rowIndex = GridPane.getRowIndex(source);
-        System.out.println("Mouse entered cell , x="+rowIndex+ " ,y="+colIndex);
-    }
-
-    public void addplant(javafx.scene.input.MouseEvent mouseEvent) throws FileNotFoundException {
-        ImageView imgpressed=(ImageView) mouseEvent.getSource();
-        System.out.println(imgpressed.getClass());
-//        int id=Integer.valueOf(imgpressed.getId());
-//        int x=id/10;
-//        int y=id%10;
-//        System.out.println("x= "+x+ " y="+y);
-        System.out.println(" ifpeashooterselecte= "+ifpeashooterselected);
-        System.out.println("ifsunflowershooterselected="+ifsunflowershooterselected);
-        if(ifpeashooterselected){
-//            grid.set
-//            ImageView img=new ImageView(new Image(new FileReader("Peashooter.png"));
-//            grid.add(img,x,y);
-            imgpressed.setImage(peaimage);
-            System.out.println("Added peashooter");
-            ifpeashooterselected=false;
-        }
-        else if(ifsunflowershooterselected){
-//            ImageView img=new ImageView(String.valueOf(sunflower));
-//            grid.add(img,x,y);
-            imgpressed.setImage(sunflowerimage);
-            System.out.println("Added sunflower");
-            ifsunflowershooterselected=false;
-        }
     }
 }
