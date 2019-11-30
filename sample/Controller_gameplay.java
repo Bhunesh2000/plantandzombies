@@ -82,8 +82,10 @@ public class Controller_gameplay {
     private Image peaimage;
     private Image sunflowerimage;
     private Image zombieimage;
+    private Image cherrybombimage;
     private boolean ifpeashooterselected=false;
     private boolean ifsunflowershooterselected=false;
+    private boolean ifcherrybombselected=false;
 
     private boolean pause=false;
 
@@ -110,6 +112,8 @@ public class Controller_gameplay {
         sunflowerimage = new Image(sunflowerfile.toURI().toString());
         File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
         zombieimage = new Image(zombiefile.toURI().toString());
+        File cherrybombfile = new File("C:\\approject\\src\\sample\\images\\cherrybomb.gif");
+         cherrybombimage = new Image(cherrybombfile.toURI().toString());
     }
     public void peafiring(ImageView pa){
         File f=new File("C:\\approject\\src\\sample\\images\\pea.png");
@@ -165,6 +169,10 @@ public class Controller_gameplay {
         System.out.println("Sunflower pressed");
         ifsunflowershooterselected=true;
     }
+    public void newcherrybomb(javafx.scene.input.MouseEvent mouseEvent) {
+        System.out.println("cherrybomb pressed");
+        ifcherrybombselected=true;
+    }
     @FXML
     private void mouseEntered(MouseEvent e) throws FileNotFoundException, MalformedURLException {
         System.out.println("x="+e.getX()+" y="+e.getY());
@@ -210,6 +218,11 @@ public class Controller_gameplay {
             imgpressed.setImage(sunflowerimage);
             System.out.println("Added sunflower");
             ifsunflowershooterselected=false;
+        }
+        else if (ifcherrybombselected) {
+            imgpressed.setImage(cherrybombimage);
+            System.out.println("Added cherrybomb");
+            ifcherrybombselected = false;
         }
     }
 
