@@ -16,7 +16,7 @@
             <Image url="@images/play_button.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="32.0" fitWidth="73.0" layoutX="216.0" layoutY="200.0" onMouseClicked="#loadgameplay" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="73.0" layoutX="216.0" layoutY="200.0" onMouseClicked="#loadgameplay_level2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>

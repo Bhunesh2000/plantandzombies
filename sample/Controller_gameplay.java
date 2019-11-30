@@ -2,6 +2,14 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Dialog;
+
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
@@ -17,11 +25,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
 public class Controller_gameplay {
-
     @FXML
     public ImageView wallnut;
     @FXML
@@ -60,6 +68,8 @@ public class Controller_gameplay {
     private Image zombieimage;
     private boolean ifpeashooterselected=false;
     private boolean ifsunflowershooterselected=false;
+
+    private boolean pause=false;
 
     public void initialize() throws InterruptedException {
         suntokens();
@@ -121,28 +131,34 @@ public class Controller_gameplay {
     }
 
     public void ingamemenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-    /*    Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        gamepane.getChildren().setAll(p);
-    */
+
+pause=true;
+/*        Alert alert = new Alert(AlertType.CONFIRMATION);
 
 
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-         alert.setTitle("In-game menu");
+
+        alert.setTitle("In-game menu");
         alert.setHeaderText("");
         alert.setContentText("What do you wish to do?");
 
-        /*Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 
-        stage.getIcons().add(new Image(this.getClass().getResource("Flag_Zombie.png").toString()));*/
 
         ButtonType buttonTypeOne = new ButtonType("Restart Level");
         ButtonType buttonTypeTwo = new ButtonType("Back to Main Menu");
         ButtonType buttonTypeThree = new ButtonType("Save game");
         ButtonType buttonTypeFour = new ButtonType("Exit game");
-        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        ButtonType buttonTypeCancel = new ButtonType("Back to game", ButtonData.CANCEL_CLOSE);
+
+
 
         alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeFour, buttonTypeCancel);
 
+       *//* Image image = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Emojione_1F62D.svg/64px-Emojione_1F62D.svg.png");
+
+       // Image image = new Image(getClass().getResource("/images/menu_screen.png").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        alert.setGraphic(imageView);
+*//*
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeOne){
             Pane p = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
@@ -160,8 +176,16 @@ public class Controller_gameplay {
             System.exit(0);
 
         } else{
-// ... user chose CANCEL or closed the dialog
-        }
+        }*/
+
+    Parent root = FXMLLoader.load(getClass().getResource("ingamemenu.fxml"));
+    Scene scene = new Scene(root);
+    Stage stage=new Stage();
+    stage.setTitle("In game menu");
+    stage.setScene(scene);
+    stage.show();
+
+        ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
@@ -194,10 +218,6 @@ public class Controller_gameplay {
 //            grid.set
 //            ImageView img=new ImageView(new Image(new FileReader("Peashooter.png"));
 //            grid.add(img,x,y);
-            System.out.println("peaimage is of type ="+peaimage.getClass());
-            if (peaimage==null){
-                System.out.println("peaimage is null");
-            }
             imgpressed.setImage(peaimage);
             System.out.println("Added peashooter");
             ifpeashooterselected=false;

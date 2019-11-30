@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="321.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_Level2">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background_lawn.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="45.0" onMouseClicked="#peashooterclicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/peashooter2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageView0_0" fitHeight="64.0" fitWidth="45.0" layoutX="138.0" layoutY="42.0" onMouseClicked="#place" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/pea_gif.gif" />
+         </image></ImageView>
+   </children>
+</AnchorPane>
