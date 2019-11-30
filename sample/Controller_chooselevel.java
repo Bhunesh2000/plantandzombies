@@ -14,6 +14,11 @@ public class Controller_chooselevel {
         Pane p = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
         choose_level.getChildren().setAll(p);
     }
+    public void loadgameplay_level2(javafx.scene.input.MouseEvent mouseEvent ) throws IOException {
+        Pane p = FXMLLoader.load(getClass().getResource("Level2.fxml"));
+        choose_level.getChildren().setAll(p);
+    }
+
     public void mainmenu(javafx.scene.input.MouseEvent mouseEvent ) throws IOException {
         Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
         choose_level.getChildren().setAll(p);

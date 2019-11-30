@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Dialog;
 
@@ -74,23 +77,28 @@ public class Controller_gameplay {
     private boolean ifpeashooterselected=false;
     private boolean ifsunflowershooterselected=false;
 
+    private boolean pause=false;
+
     public void initialize() throws InterruptedException {
-        suntokens();
-        timecounter();
-        zombiemove(zombie1);
-        zombiemove(zombie2);
-        zombiemove(zombie3);
-        zombiemove(zombie4);
-        zombiemove(zombie5);
-        peafiring(pea1);
-        peafiring(pea2);
-        peafiring(pea3);
-        File peafile = new File("images/pea_gif.gif");
-        peaimage = new Image(peafile.toURI().toString());
-        File sunflowerfile = new File("images/sunflower_gif.gif");
-        sunflowerimage = new Image(sunflowerfile.toURI().toString());
-        File zombiefile = new File("images/zombie_moving_gif.gif");
-        zombieimage = new Image(zombiefile.toURI().toString());
+
+
+          suntokens();
+          timecounter();
+          zombiemove(zombie1);
+          zombiemove(zombie2);
+          zombiemove(zombie3);
+          zombiemove(zombie4);
+          zombiemove(zombie5);
+          peafiring(pea1);
+          peafiring(pea2);
+          peafiring(pea3);
+          File peafile = new File("images/pea_gif.gif");
+          peaimage = new Image(peafile.toURI().toString());
+          File sunflowerfile = new File("images/sunflower_gif.gif");
+          sunflowerimage = new Image(sunflowerfile.toURI().toString());
+          File zombiefile = new File("images/zombie_moving_gif.gif");
+          zombieimage = new Image(zombiefile.toURI().toString());
+
     }
     public void peafiring(ImageView pea){
         pea.setX(200);
@@ -138,12 +146,9 @@ public class Controller_gameplay {
     }
 
     public void ingamemenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-    /*    Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-        gamepane.getChildren().setAll(p);
-    */
 
-
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+pause=true;
+/*        Alert alert = new Alert(AlertType.CONFIRMATION);
 
 
 
@@ -151,19 +156,7 @@ public class Controller_gameplay {
         alert.setHeaderText("");
         alert.setContentText("What do you wish to do?");
 
-        //alert.setGraphic(new ImageView(this.getClass().getResource("pvz_home_page.png").toString()));
-        /*
-        Image image = new Image(getClass().getResource("pvsz_home_page.jpeg").toExternalForm());
-        ImageView imageView = new ImageView(image);
 
-        alert.setGraphic();*/
-
-/*
-
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-
-        stage.getIcons().add(new Image(this.getClass().getResource("Flag_Zombie.png").toString()));
-*/
 
         ButtonType buttonTypeOne = new ButtonType("Restart Level");
         ButtonType buttonTypeTwo = new ButtonType("Back to Main Menu");
@@ -175,17 +168,12 @@ public class Controller_gameplay {
 
         alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeFour, buttonTypeCancel);
 
-/*
+       *//* Image image = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Emojione_1F62D.svg/64px-Emojione_1F62D.svg.png");
 
-        Image image = new Image(getClass().getResource("pvsz_home_page.jpeg").toExternalForm());
-
-        //ImageView imageView = new ImageView(image);
-        alert.getDialogPane().setGraphic(image);
-        alert.showAndWait();
-*/
-
-
-
+       // Image image = new Image(getClass().getResource("/images/menu_screen.png").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        alert.setGraphic(imageView);
+*//*
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeOne){
             Pane p = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
@@ -203,8 +191,16 @@ public class Controller_gameplay {
             System.exit(0);
 
         } else{
-// ... user chose CANCEL or closed the dialog
-        }
+        }*/
+
+    Parent root = FXMLLoader.load(getClass().getResource("ingamemenu.fxml"));
+    Scene scene = new Scene(root);
+    Stage stage=new Stage();
+    stage.setTitle("In game menu");
+    stage.setScene(scene);
+    stage.show();
+
+        ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
