@@ -21,17 +21,17 @@
             <Image url="@images/play_button.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="535.0" layoutY="162.0" onMouseClicked="#loadgameplay" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="535.0" layoutY="162.0" onMouseClicked="#loadgameplay_level5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="435.0" layoutY="162.0" onMouseClicked="#loadgameplay" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="435.0" layoutY="162.0" onMouseClicked="#loadgameplay_level4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="342.0" layoutY="162.0" onMouseClicked="#loadgameplay" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="342.0" layoutY="162.0" onMouseClicked="#loadgameplay_level3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>

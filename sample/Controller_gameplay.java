@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import java.io.*;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Random;
 import java.util.Timer;
@@ -38,6 +40,8 @@ import javafx.util.Duration;
 
 
 public class Controller_gameplay {
+
+   ArrayList<Zombies> zombie_list=new ArrayList<Zombies>();
     @FXML
     public ImageView wallnut;
     @FXML
@@ -87,6 +91,7 @@ public class Controller_gameplay {
         zombiemove(zombie3);
         zombiemove(zombie4);
         zombiemove(zombie5);
+        zombiemove(zombieCreate());
 //        peafiring(pea1);
 //        peafiring(pea2);
 //        peafiring(pea3);
@@ -133,6 +138,7 @@ public class Controller_gameplay {
         suntokens();
     }
     public int zombiemove(ImageView zombie){
+        System.out.println(" imageview "+zombie);
         TranslateTransition tr=new TranslateTransition();
         tr.setDuration(Duration.seconds(25));
         tr.setToX(-440);
@@ -141,7 +147,6 @@ public class Controller_gameplay {
         tr.play();
         return 1;
     }
-
     public void newpeashooter(javafx.scene.input.MouseEvent mouseEvent) {
         System.out.println("Peashoooter pressed");
         ifpeashooterselected=true;
@@ -167,7 +172,6 @@ public class Controller_gameplay {
         System.out.println(" ifpeashooterselecte= "+ifpeashooterselected);
         System.out.println("ifsunflowershooterselected="+ifsunflowershooterselected);
         if(ifpeashooterselected){
-//            ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
             System.out.println("Added peashooter");
             Shooter p=new Peashooter(imgpressed,gamepane);
             ifpeashooterselected=false;
@@ -182,8 +186,6 @@ public class Controller_gameplay {
                         System.out.println("peafiring called");
                         System.out.println("x= "+mx+" y="+my);
                         imgv.relocate(mx+50,my-40);
-//                        imgv.setX(imgpressed.getX());
-//                        imgv.setY(imgpressed.getY());
                         TranslateTransition tr=new TranslateTransition();
                         tr.setDuration(Duration.seconds(15));
                         tr.setToX(1600);
@@ -201,54 +203,33 @@ public class Controller_gameplay {
             ifsunflowershooterselected=false;
         }
     }
+
+    public ImageView zombieCreate(){
+        Zombies zombie1= new Zombies();
+        zombie_list.add(zombie1);
+
+        File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
+        Image zombieimage = new Image(zombiefile.toURI().toString());
+
+        ImageView zombieimageview = new ImageView(zombieimage);
+
+    /*    zombieimageview.setPreserveRatio(true);
+        zombieimageview.setCache(true);*/
+        zombieimageview.setFitHeight(40);
+        zombieimageview.setFitWidth(40);
+
+
+
+       // zombieimageview.relocate(100,100);
+        gamepane.getChildren().addAll(zombieimageview);
+        zombieimageview.setLayoutX(-200);
+        zombieimageview.setLayoutY(200);
+        System.out.println("added");
+        return zombieimageview;
+
+    }
     public void ingamemenu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
         pause=true;
-/*        Alert alert = new Alert(AlertType.CONFIRMATION);
-
-
-
-        alert.setTitle("In-game menu");
-        alert.setHeaderText("");
-        alert.setContentText("What do you wish to do?");
-
-
-
-        ButtonType buttonTypeOne = new ButtonType("Restart Level");
-        ButtonType buttonTypeTwo = new ButtonType("Back to Main Menu");
-        ButtonType buttonTypeThree = new ButtonType("Save game");
-        ButtonType buttonTypeFour = new ButtonType("Exit game");
-        ButtonType buttonTypeCancel = new ButtonType("Back to game", ButtonData.CANCEL_CLOSE);
-
-
-
-        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeThree, buttonTypeFour, buttonTypeCancel);
-
-       *//* Image image = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Emojione_1F62D.svg/64px-Emojione_1F62D.svg.png");
-
-       // Image image = new Image(getClass().getResource("/images/menu_screen.png").toExternalForm());
-        ImageView imageView = new ImageView(image);
-        alert.setGraphic(imageView);
-*//*
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeOne){
-            Pane p = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
-            gamepane.getChildren().setAll(p);
-            // ... user chose "One"
-        } else if (result.get() == buttonTypeTwo) {
-            Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-            gamepane.getChildren().setAll(p);
-            // ... user chose "Two"
-        } else if (result.get() == buttonTypeThree) {
-            Pane p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-            gamepane.getChildren().setAll(p);
-            // ... user chose "Three"
-        } else if(result.get() == buttonTypeFour){
-            System.exit(0);
-
-        } else{
-        }*/
-
         Parent root = FXMLLoader.load(getClass().getResource("ingamemenu.fxml"));
         Scene scene = new Scene(root);
         Stage stage=new Stage();

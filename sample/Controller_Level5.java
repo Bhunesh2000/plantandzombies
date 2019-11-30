@@ -39,7 +39,7 @@ import javafx.util.Duration;
 import static java.lang.Thread.sleep;
 
 
-public class Controller_Level2 {
+public class Controller_Level5 {
 
     boolean peashooterclicked_var=false;
 
