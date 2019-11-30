@@ -1,40 +1,27 @@
 package sample;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Dialog;
-
+import javafx.scene.Node;
 import javafx.scene.control.*;
-
-import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.stage.Stage;
-
-import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.Optional;
-import java.net.URL;
 import java.util.Random;
-import java.util.ResourceBundle;
 import javafx.animation.*;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.*;
-import java.awt.*;
-import java.util.concurrent.TimeUnit;
+
 
 import javafx.util.Duration;
 
 
 public class Controller_gameplay {
+
     @FXML
     public ImageView wallnut;
     @FXML
@@ -85,11 +72,11 @@ public class Controller_gameplay {
         peafiring(pea1);
         peafiring(pea2);
         peafiring(pea3);
-        File peafile = new File("images/pea_gif.gif");
+        File peafile = new File("C:\\approject\\src\\sample\\images\\pea_gif.gif");
         peaimage = new Image(peafile.toURI().toString());
-        File sunflowerfile = new File("images/sunflower_gif.gif");
+        File sunflowerfile = new File("C:\\approject\\src\\sample\\images\\sunflower_gif.gif");
         sunflowerimage = new Image(sunflowerfile.toURI().toString());
-        File zombiefile = new File("images/zombie_moving_gif.gif");
+        File zombiefile = new File("C:\\approject\\src\\sample\\images\\Zombie_gif.gif");
         zombieimage = new Image(zombiefile.toURI().toString());
     }
     public void peafiring(ImageView pea){
@@ -106,20 +93,16 @@ public class Controller_gameplay {
     }
     public void suntokens() throws InterruptedException {
         Random randoms = new Random();
-        int x=0;
-        while (x<500){
-            double randx = 50 + (450 - 50) * randoms.nextDouble();
-            sun.setLayoutX(randx);
-            sun.setLayoutY(10);
-            TranslateTransition tr=new TranslateTransition();
-            tr.setDuration(Duration.seconds(30));
-            tr.setToY(350);
-            tr.setNode(sun);
-            tr.play();
-            System.out.println("running sun");
-//            tr.stop();
-            x++;
-        }
+        double randx = 120 + (450 - 50) * randoms.nextDouble();
+        sun.setLayoutX(randx);
+        sun.setLayoutY((double)10);
+        TranslateTransition tr=new TranslateTransition();
+        tr.setDuration(Duration.seconds(30));
+        tr.setToY(350);
+        tr.setNode(sun);
+        tr.play();
+        System.out.println("running sun");
+//      tr.stop();
     }
 
     public void suntokenclicked() throws InterruptedException {
@@ -144,7 +127,7 @@ public class Controller_gameplay {
 
 
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("In-game menu");
+         alert.setTitle("In-game menu");
         alert.setHeaderText("");
         alert.setContentText("What do you wish to do?");
 
@@ -190,17 +173,31 @@ public class Controller_gameplay {
         System.out.println("Sunflower pressed");
         ifsunflowershooterselected=true;
     }
+    @FXML
+    private void mouseEntered(MouseEvent e) {
+        Node source = (Node)e.getSource() ;
+        Integer colIndex = GridPane.getColumnIndex(source);
+        Integer rowIndex = GridPane.getRowIndex(source);
+        System.out.println("Mouse entered cell , x="+rowIndex+ " ,y="+colIndex);
+    }
 
     public void addplant(javafx.scene.input.MouseEvent mouseEvent) throws FileNotFoundException {
         ImageView imgpressed=(ImageView) mouseEvent.getSource();
-        int id=Integer.valueOf(imgpressed.getId());
-        int x=id/10;
-        int y=id%10;
-        System.out.println("x= "+x+ " y="+y);
+        System.out.println(imgpressed.getClass());
+//        int id=Integer.valueOf(imgpressed.getId());
+//        int x=id/10;
+//        int y=id%10;
+//        System.out.println("x= "+x+ " y="+y);
+        System.out.println(" ifpeashooterselecte= "+ifpeashooterselected);
+        System.out.println("ifsunflowershooterselected="+ifsunflowershooterselected);
         if(ifpeashooterselected){
 //            grid.set
 //            ImageView img=new ImageView(new Image(new FileReader("Peashooter.png"));
 //            grid.add(img,x,y);
+            System.out.println("peaimage is of type ="+peaimage.getClass());
+            if (peaimage==null){
+                System.out.println("peaimage is null");
+            }
             imgpressed.setImage(peaimage);
             System.out.println("Added peashooter");
             ifpeashooterselected=false;
