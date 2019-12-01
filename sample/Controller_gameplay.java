@@ -166,7 +166,7 @@ public class Controller_gameplay {
 
     public void suntokenclicked(MouseEvent msevent) throws InterruptedException {
         int tokens=Integer.parseInt(countersuntoken.getText());
-        countersuntoken.setText(Integer.toString(tokens+1));
+        countersuntoken.setText(Integer.toString(tokens+25));
 //        ImageView img=(ImageView) MouseEvent.getSource();
 //        gamepane.getChildren().remove(img);
     }
