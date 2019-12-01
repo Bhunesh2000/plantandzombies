@@ -209,7 +209,7 @@ public class Controller_Level4 {
         if(ifpeashooterselected){
             System.out.println("Added peashooter");
 //            addtoplantarray();
-            Shooter p=new Peashooter(imgpressed,gamepane); //polymorphism
+            Shooter p=new Peashooter(imgpressed); //polymorphism
             ifpeashooterselected=false;
             Timer t=new Timer();
             t.scheduleAtFixedRate(new TimerTask() {

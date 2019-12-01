@@ -3,8 +3,8 @@ package sample;
 public abstract class Plants {
     private double health=100;
     private int waiting_time;
-    private double positionX;
-    private double positionY;
+    private double X;
+    private double Y;
 
     public double getHealth() {
         return health;
@@ -23,19 +23,19 @@ public abstract class Plants {
     }
 
     public double getPositionX() {
-        return positionX;
+        return X;
     }
 
     public void setPositionX(double positionX) {
-        this.positionX = positionX;
+        this.X = positionX;
     }
 
     public double getPositionY() {
-        return positionY;
+        return Y;
     }
 
     public void setPositionY(double positionY) {
-        this.positionY = positionY;
+        this.Y = positionY;
     }
 }
 

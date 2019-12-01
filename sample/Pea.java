@@ -6,42 +6,23 @@ import javafx.scene.layout.Pane;
 
 import java.io.File;
 
-public class Pea {
-
-    private double PositionX;
-    private double PositionY;
-    private ImageView pea;
+public class Pea extends thrown {
     private Image peaimage;
-    public Pea(Pane pane, double positionX, double positionY) {
-        PositionX = positionX;
-        PositionY = positionY;
+    public Pea(double positionX, double positionY) {
+        this.setX(positionX);
+        this.setY(positionY);
         File peafile = new File("C:\\approject\\src\\sample\\images\\pea.png");
         peaimage = new Image(peafile.toURI().toString());
-        pea=new ImageView(peaimage);
-        pane.getChildren().add(pea);
+        this.setObj(new ImageView(peaimage));
     }
 
-    public Image getPeaimage() {
-        return peaimage;
+    public ImageView getPeaimage() {
+        ImageView imgv=new ImageView(peaimage);
+        return imgv;
     }
 
     public void setPeaimage(Image peaimage) {
         this.peaimage = peaimage;
     }
 
-    public double getPositionX() {
-        return PositionX;
-    }
-
-    public void setPositionX(double positionX) {
-        PositionX = positionX;
-    }
-
-    public double getPositionY() {
-        return PositionY;
-    }
-
-    public void setPositionY(double positionY) {
-        PositionY = positionY;
-    }
 }
