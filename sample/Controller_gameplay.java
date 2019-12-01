@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
@@ -252,8 +254,65 @@ public class Controller_gameplay {
             System.out.println("Added sunflower");
 //            addtoplantarray(p,my);
             ifsunflowershooterselected=false;
+
+            double sun_X=imgpressed.getLayoutX();
+            //System.out.println("sun_X "+sun_X);
+            double sun_Y=imgpressed.getLayoutY();
+
+            ImageView suntry=new ImageView(sun);
+            gamepane.getChildren().add(suntry);
+            suntry.relocate(sun_X,sun_Y);
+
+            TranslateTransition tr=new TranslateTransition();
+            tr.setDuration(Duration.seconds(45));
+            tr.setToY(750);
+            tr.setNode(suntry);
+            System.out.println("tr played");
+            tr.play();
+
+            suntry.setOnMouseClicked(MouseEvent -> {
+                int tokens=Integer.parseInt(countersuntoken.getText());
+                countersuntoken.setText(Integer.toString(tokens+1));
+                ImageView img=(ImageView) MouseEvent.getSource();
+                gamepane.getChildren().remove(img);
+            });
+
+           /* Timeline t1=new Timeline();
+            t1.setCycleCount(Animation.INDEFINITE);
+            KeyFrame sunfromflower=new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                ImageView sunimage=new ImageView(sun);
+
+                gamepane.getChildren().add(sunimage);
+                sunimage.relocate(sun_X,sun_Y);
+
+                    TranslateTransition tr=new TranslateTransition();
+                    tr.setDuration(Duration.seconds(45));
+                    tr.setToY(750);
+                    tr.setNode(sunimage);
+                    System.out.println("tr played");
+                    tr.play();
+
+                    sunimage.setOnMouseClicked(MouseEvent -> {
+                        int tokens=Integer.parseInt(countersuntoken.getText());
+                        countersuntoken.setText(Integer.toString(tokens+1));
+                        ImageView img=(ImageView) MouseEvent.getSource();
+                        gamepane.getChildren().remove(img);
+                    });
+
+
+                }
+            });
+            t1.getKeyFrames().add(sunfromflower);
+            System.out.println("t1. play");
+            t1.play();*/
+
         }
         else if (ifcherrybombselected) {
+            CherryBomb cherrybomb=new CherryBomb();
+            File cherrybombfile = new File("C:\\approject\\src\\sample\\images\\cherrybomb.gif");
+            cherrybombimage = new Image(cherrybombfile.toURI().toString());
             imgpressed.setImage(cherrybombimage);
             System.out.println("Added cherrybomb");
 //            addtoplantarray(p,my);

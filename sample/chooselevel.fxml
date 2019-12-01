@@ -4,34 +4,34 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="choose_level" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_chooselevel">
+<Pane fx:id="choose_level" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1560.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_chooselevel">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="607.0" pickOnBounds="true">
+      <ImageView fitHeight="840.0" fitWidth="1560.0" pickOnBounds="true">
          <image>
             <Image url="@images/choose_level_image.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="112.0" layoutY="162.0" onMouseClicked="#loadgameplay" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="326.0" layoutY="331.0" onMouseClicked="#loadgameplay" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="32.0" fitWidth="73.0" layoutX="216.0" layoutY="200.0" onMouseClicked="#loadgameplay_level2" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="73.0" layoutX="914.0" layoutY="327.0" onMouseClicked="#loadgameplay_level3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="535.0" layoutY="162.0" onMouseClicked="#loadgameplay_level5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="1162.0" layoutY="331.0" onMouseClicked="#loadgameplay_level4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="435.0" layoutY="162.0" onMouseClicked="#loadgameplay_level4" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="1404.0" layoutY="331.0" onMouseClicked="#loadgameplay_level5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="51.0" layoutX="342.0" layoutY="162.0" onMouseClicked="#loadgameplay_level3" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="63.0" fitWidth="185.0" layoutX="560.0" layoutY="418.0" onMouseClicked="#loadgameplay_level2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/play_button.png" />
          </image>
