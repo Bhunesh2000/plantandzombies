@@ -31,21 +31,6 @@
             <Image url="@images/menu.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cherry_bomb" fitHeight="48.0" fitWidth="77.0" layoutX="23.0" layoutY="160.0" onMouseClicked="#newcherrybomb" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Cherry_Bomb2.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sunflower11" fitHeight="106.0" fitWidth="81.0" layoutX="20.0" layoutY="235.0" onMouseClicked="#newsunflower" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Wall-nut2.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sunflower111" fitHeight="49.0" fitWidth="84.0" layoutX="19.0" layoutY="308.0" onMouseClicked="#newsunflower" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Potato_Mine2.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="peashooter1" fitHeight="33.0" fitWidth="99.0" layoutX="130.0" layoutY="12.0" onMouseClicked="#newpeashooter" pickOnBounds="true">
          <image>
             <Image url="@images/suntoken_counter.png" />

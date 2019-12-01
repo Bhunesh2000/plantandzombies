@@ -89,4 +89,10 @@ public class Zombies implements Runnable{
         ImageView imgv=new ImageView(zombieimage);
         return imgv;
     }
+    public ImageView imgview_diff(){
+        File zombiedifffile = new File("C:\\approject\\src\\sample\\images\\Conehead_Zombie.png");
+        Image zombieimagediff = new Image(zombiedifffile.toURI().toString());
+        ImageView imgv=new ImageView(zombieimagediff);
+        return imgv;
+    }
 }

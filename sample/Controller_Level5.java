@@ -146,7 +146,7 @@ public class Controller_Level5 {
         ImageView sn=new ImageView(sun);
         sn.setOnMouseClicked(MouseEvent -> {
             int tokens=Integer.parseInt(countersuntoken.getText());
-            countersuntoken.setText(Integer.toString(tokens+1));
+            countersuntoken.setText(Integer.toString(tokens+25));
             ImageView img=(ImageView) MouseEvent.getSource();
             gamepane.getChildren().remove(img);
         });
@@ -324,7 +324,7 @@ public class Controller_Level5 {
             @Override
             public void run() {
                 Platform.runLater(() -> {
-                    ImageView imgv=zom.imgview();
+                    ImageView imgv=zom.imgview_diff();
                     imgv.setFitHeight(125);
                     imgv.setFitWidth(80);
                     gamepane.getChildren().add(imgv);

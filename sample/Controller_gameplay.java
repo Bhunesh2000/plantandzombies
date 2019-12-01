@@ -139,14 +139,19 @@ public class Controller_gameplay {
         tr.play();
     }
     public void timecounter(){
-        int time=Integer.parseInt(timer.getText()) ;
-        timer.setText(Integer.toString(time+1));
+
+
+                int time=Integer.parseInt(timer.getText()) ;
+                timer.setText(Integer.toString(time+1));
+
+
+
     }
     public void suntokens() throws InterruptedException{
         ImageView sn=new ImageView(sun);
         sn.setOnMouseClicked(MouseEvent -> {
             int tokens=Integer.parseInt(countersuntoken.getText());
-            countersuntoken.setText(Integer.toString(tokens+1));
+            countersuntoken.setText(Integer.toString(tokens+25));
             ImageView img=(ImageView) MouseEvent.getSource();
             gamepane.getChildren().remove(img);
         });
@@ -257,7 +262,7 @@ public class Controller_gameplay {
 
             suntry.setOnMouseClicked(MouseEvent -> {
                 int tokens=Integer.parseInt(countersuntoken.getText());
-                countersuntoken.setText(Integer.toString(tokens+1));
+                countersuntoken.setText(Integer.toString(tokens+25));
                 ImageView img=(ImageView) MouseEvent.getSource();
                 gamepane.getChildren().remove(img);
             });

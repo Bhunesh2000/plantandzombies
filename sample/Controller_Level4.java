@@ -82,7 +82,7 @@ public class Controller_Level4 {
     private ArrayList<Plants> plants3;
     private ArrayList<Plants> plants4;
     private boolean ifcherrybombselected=false;
-
+    private boolean iffireselected=false;
 
     private boolean pause=false;
 
@@ -193,6 +193,10 @@ public class Controller_Level4 {
         System.out.println("cherrybomb pressed");
         ifcherrybombselected=true;
     }
+    public void newfire(javafx.scene.input.MouseEvent mouseEvent) {
+        System.out.println("fire pressed");
+        iffireselected=true;
+    }
     @FXML
     private void mouseEntered(MouseEvent e) throws FileNotFoundException, MalformedURLException {
         System.out.println("x="+e.getX()+" y="+e.getY());
@@ -211,7 +215,7 @@ public class Controller_Level4 {
         if(ifpeashooterselected){
             System.out.println("Added peashooter");
 //            addtoplantarray();
-            Shooter p=new Peashooter(imgpressed); //polymorphism
+            Shooter p=new Peashooter(imgpressed,gamepane); //polymorphism
             ifpeashooterselected=false;
             Timer t=new Timer();
             t.scheduleAtFixedRate(new TimerTask() {
@@ -257,43 +261,44 @@ public class Controller_Level4 {
 
             suntry.setOnMouseClicked(MouseEvent -> {
                 int tokens=Integer.parseInt(countersuntoken.getText());
-                countersuntoken.setText(Integer.toString(tokens+1));
+                countersuntoken.setText(Integer.toString(tokens+25));
                 ImageView img=(ImageView) MouseEvent.getSource();
                 gamepane.getChildren().remove(img);
-            });
+            });}
+            else if(iffireselected){
+                System.out.println("Added fire");
+//            addtoplantarray();
+                Shooter p=new Peashooter(imgpressed,gamepane); //polymorphism
+                iffireselected=false;
+                Timer t=new Timer();
+                t.scheduleAtFixedRate(new TimerTask() {
+                    @Override
+                    public void run() {
+                        Platform.runLater(() -> {
+                            File peafirefile = new File("C:\\approject\\src\\sample\\images\\fire.jpg");
+                            Image peafire=new Image(peafirefile.toURI().toString());
+                            ImageView imgv=new ImageView(peafire);
+                            imgv.setFitHeight(40);
+                            imgv.setFitWidth(40);
+//                        addtoimgarray();
+                            gamepane.getChildren().add(imgv);
+                            System.out.println("peafiring called");
+                            System.out.println("x= "+mx+" y="+my);
+                            imgv.relocate(mx+50,my-45);
+                            TranslateTransition tr=new TranslateTransition();
+                            tr.setDuration(Duration.seconds(15));
+                            tr.setToX(1600);
+                            tr.setNode(imgv);
+                            System.out.println("transition set");
+                            tr.play();
+                        });
+                    }
+                }, 0, 5*1000);
 
-           /* Timeline t1=new Timeline();
-            t1.setCycleCount(Animation.INDEFINITE);
-            KeyFrame sunfromflower=new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                ImageView sunimage=new ImageView(sun);
-
-                gamepane.getChildren().add(sunimage);
-                sunimage.relocate(sun_X,sun_Y);
-
-                    TranslateTransition tr=new TranslateTransition();
-                    tr.setDuration(Duration.seconds(45));
-                    tr.setToY(750);
-                    tr.setNode(sunimage);
-                    System.out.println("tr played");
-                    tr.play();
-
-                    sunimage.setOnMouseClicked(MouseEvent -> {
-                        int tokens=Integer.parseInt(countersuntoken.getText());
-                        countersuntoken.setText(Integer.toString(tokens+1));
-                        ImageView img=(ImageView) MouseEvent.getSource();
-                        gamepane.getChildren().remove(img);
-                    });
+            }
 
 
-                }
-            });
-            t1.getKeyFrames().add(sunfromflower);
-            System.out.println("t1. play");
-            t1.play();*/
 
-        }
         else if (ifcherrybombselected) {
             CherryBomb cherrybomb=new CherryBomb();
             File cherrybombfile = new File("C:\\approject\\src\\sample\\images\\cherrybomb.gif");
@@ -302,6 +307,7 @@ public class Controller_Level4 {
             System.out.println("Added cherrybomb");
             ifcherrybombselected = false;
         }
+
     }
     public void addtoplantarray(Plants plnt,double y){
 //        if (double y>)

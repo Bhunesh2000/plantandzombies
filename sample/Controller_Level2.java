@@ -146,7 +146,7 @@ public class Controller_Level2 {
         ImageView sn=new ImageView(sun);
         sn.setOnMouseClicked(MouseEvent -> {
             int tokens=Integer.parseInt(countersuntoken.getText());
-            countersuntoken.setText(Integer.toString(tokens+1));
+            countersuntoken.setText(Integer.toString(tokens+25));
             ImageView img=(ImageView) MouseEvent.getSource();
             gamepane.getChildren().remove(img);
         });
@@ -211,7 +211,7 @@ public class Controller_Level2 {
         if(ifpeashooterselected){
             System.out.println("Added peashooter");
 //            addtoplantarray();
-            Shooter p=new Peashooter(imgpressed); //polymorphism
+            Shooter p=new Peashooter(imgpressed,gamepane); //polymorphism
             ifpeashooterselected=false;
             Timer t=new Timer();
             t.scheduleAtFixedRate(new TimerTask() {
@@ -257,7 +257,7 @@ public class Controller_Level2 {
 
             suntry.setOnMouseClicked(MouseEvent -> {
                 int tokens=Integer.parseInt(countersuntoken.getText());
-                countersuntoken.setText(Integer.toString(tokens+1));
+                countersuntoken.setText(Integer.toString(tokens+25));
                 ImageView img=(ImageView) MouseEvent.getSource();
                 gamepane.getChildren().remove(img);
             });
