@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
@@ -67,6 +69,7 @@ public class Controller_Level3 {
     private Image sunflowerimage;
     private Image zombieimage;
     private Image cherrybombimage;
+    private Image firepeashooterimage;
     private boolean ifpeashooterselected=false;
     private boolean ifsunflowershooterselected=false;
     private ArrayList<ImageView> thobjects0;
@@ -80,6 +83,7 @@ public class Controller_Level3 {
     private ArrayList<Plants> plants3;
     private ArrayList<Plants> plants4;
     private boolean ifcherrybombselected=false;
+    private boolean iffirepeashooterselected=false;
 
 
     private boolean pause=false;
@@ -105,7 +109,7 @@ public class Controller_Level3 {
         zombieimage = new Image(zombiefile.toURI().toString());
         File fsun=new File("C:\\approject\\src\\sample\\images\\sun.png");
         sun=new Image(fsun.toURI().toString());
-        peafiring();
+//        peafiring();
 
         Timer t=new Timer();
         t.scheduleAtFixedRate(new TimerTask() {
@@ -129,10 +133,10 @@ public class Controller_Level3 {
         ImageView pea=new ImageView(p);
         gamepane.getChildren().add(pea);
         pea.setX(200);
-        pea.setY(200);
+        pea.setY(800);
         TranslateTransition tr=new TranslateTransition();
-        tr.setDuration(Duration.seconds(15));
-        tr.setToX(550);
+        tr.setDuration(Duration.seconds(5));
+        tr.setToX(1550);
         tr.setNode(pea);
         tr.play();
     }
@@ -182,7 +186,10 @@ public class Controller_Level3 {
         System.out.println("Peashoooter pressed");
         ifpeashooterselected=true;
     }
-
+    public void newfirepeashooter(javafx.scene.input.MouseEvent mouseEvent) {
+        System.out.println("fire Peashoooter pressed");
+        iffirepeashooterselected=true;
+    }
     public void newsunflower(javafx.scene.input.MouseEvent mouseEvent) {
         System.out.println("Sunflower pressed");
         ifsunflowershooterselected=true;
@@ -237,12 +244,110 @@ public class Controller_Level3 {
             imgpressed.setImage(sunflowerimage);
             System.out.println("Added sunflower");
             ifsunflowershooterselected=false;
+
+            double sun_X=imgpressed.getLayoutX();
+            //System.out.println("sun_X "+sun_X);
+            double sun_Y=imgpressed.getLayoutY();
+
+            ImageView suntry=new ImageView(sun);
+            gamepane.getChildren().add(suntry);
+            suntry.relocate(sun_X,sun_Y);
+
+            TranslateTransition tr=new TranslateTransition();
+            tr.setDuration(Duration.seconds(45));
+            tr.setToY(750);
+            tr.setNode(suntry);
+            System.out.println("tr played");
+            tr.play();
+
+            suntry.setOnMouseClicked(MouseEvent -> {
+                int tokens=Integer.parseInt(countersuntoken.getText());
+                countersuntoken.setText(Integer.toString(tokens+1));
+                ImageView img=(ImageView) MouseEvent.getSource();
+                gamepane.getChildren().remove(img);
+            });
+
+           /* Timeline t1=new Timeline();
+            t1.setCycleCount(Animation.INDEFINITE);
+            KeyFrame sunfromflower=new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                ImageView sunimage=new ImageView(sun);
+
+                gamepane.getChildren().add(sunimage);
+                sunimage.relocate(sun_X,sun_Y);
+
+                    TranslateTransition tr=new TranslateTransition();
+                    tr.setDuration(Duration.seconds(45));
+                    tr.setToY(750);
+                    tr.setNode(sunimage);
+                    System.out.println("tr played");
+                    tr.play();
+
+                    sunimage.setOnMouseClicked(MouseEvent -> {
+                        int tokens=Integer.parseInt(countersuntoken.getText());
+                        countersuntoken.setText(Integer.toString(tokens+1));
+                        ImageView img=(ImageView) MouseEvent.getSource();
+                        gamepane.getChildren().remove(img);
+                    });
+
+
+                }
+            });
+            t1.getKeyFrames().add(sunfromflower);
+            System.out.println("t1. play");
+            t1.play();*/
+
         }
         else if (ifcherrybombselected) {
+            CherryBomb cherrybomb=new CherryBomb();
+            File cherrybombfile = new File("C:\\approject\\src\\sample\\images\\cherrybomb.gif");
+            cherrybombimage = new Image(cherrybombfile.toURI().toString());
             imgpressed.setImage(cherrybombimage);
             System.out.println("Added cherrybomb");
             ifcherrybombselected = false;
         }
+        else if (iffirepeashooterselected) {
+            CherryBomb cherrybomb=new CherryBomb();
+            File firepeashooterfile = new File("C:\\approject\\src\\sample\\images\\firePeashooter.jpg");
+            firepeashooterimage = new Image(firepeashooterfile.toURI().toString());
+            imgpressed.setImage(firepeashooterimage);
+            System.out.println("Added firepeashooter");
+
+            if(iffirepeashooterselected){
+
+//            addtoplantarray();
+                Shooter p=new Peashooter(imgpressed,gamepane); //polymorphism
+                ifpeashooterselected=false;
+
+                File peafirefile = new File("C:\\approject\\src\\sample\\images\\fire.jpg");
+                Image peafire=new Image(peafirefile.toURI().toString());
+
+                Timer t=new Timer();
+                t.scheduleAtFixedRate(new TimerTask() {
+                    @Override
+                    public void run() {
+                        Platform.runLater(() -> {
+                            ImageView imgv=new ImageView(peafire);
+                            imgv.setFitHeight(40);
+                            imgv.setFitWidth(40);
+//                        addtoimgarray();
+                            gamepane.getChildren().add(imgv);
+                            System.out.println("peafiring called");
+                            System.out.println("x= "+mx+" y="+my);
+                            imgv.relocate(mx+50,my-45);
+                            TranslateTransition tr=new TranslateTransition();
+                            tr.setDuration(Duration.seconds(15));
+                            tr.setToX(1600);
+                            tr.setNode(imgv);
+                            System.out.println("transition set");
+                            tr.play();
+                        });
+                    }
+                }, 0, 5*1000);
+
+            iffirepeashooterselected = false;
+        }}
     }
     public void addtoplantarray(Plants plnt,double y){
 //        if (double y>)

@@ -11,17 +11,22 @@ import java.net.MalformedURLException;
 
 public class Peashooter extends Shooter {
     private Image peashooter;
-    private Pea pea;
-
-    public Peashooter(ImageView imgv) throws MalformedURLException {
+    private Image pea;
+    private Image peafire;
+    private double x;
+    private double y;
+    public Pane pane;
+    public Peashooter(ImageView imgv, Pane pane) throws MalformedURLException {
         File peashooterfile = new File("C:\\approject\\src\\sample\\images\\pea_gif.gif");
         peashooter=new Image(peashooterfile.toURI().toString());
         imgv.setImage(peashooter);
-        this.setPositionX(imgv.getX());
-        this.setPositionY(imgv.getY());
+        x=imgv.getX();
+        y=imgv.getY();
+        pane=this.pane;
         File peafile = new File("C:\\approject\\src\\sample\\images\\pea.png");
-        pea=new Pea(imgv.getX(),imgv.getY());
-        obj=pea;
+        pea=new Image(peafile.toURI().toString());
+        File peafirefile = new File("C:\\approject\\src\\sample\\images\\fire.jpg");
+        peafire=new Image(peafirefile.toURI().toString());
     }
     @Override
     public void run(){
@@ -32,6 +37,11 @@ public class Peashooter extends Shooter {
 
     }
     public ImageView imgview(){
-        return pea.getPeaimage();
+        ImageView imgv=new ImageView(pea);
+        return imgv;
+    }
+    public ImageView imgview_fire(){
+        ImageView imgv=new ImageView(peafire);
+        return imgv;
     }
 }
